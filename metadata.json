@@ -1,0 +1,7 @@
+{
+  "name": "GuardianTrack",
+  "description": "Real-time location tracking for family safety and peace of mind. Designed to help parents, spouses, and loved ones stay connected and safe.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

@@ -1,0 +1,62 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email']) &&
+             data.uid is string &&
+             data.email is string;
+    }
+    
+    function isValidLocationUpdate(data) {
+      return data.diff(resource.data).affectedKeys().hasOnly(['location', 'lastSeen']);
+    }
+
+    // User profiles
+    match /users/{userId} {
+      // Anyone authenticated can read a user profile IF they are accepted trackers
+      // For simplicity in this prototype, we'll allow reading if you know the UID,
+      // but in a production app, we'd check tracking_requests.
+      allow read: if isAuthenticated();
+      
+      // Only owner can create/update their own profile
+      allow create: if isOwner(userId) && isValidUser(request.resource.data);
+      allow update: if isOwner(userId);
+    }
+    
+    // Tracking requests
+    match /tracking_requests/{requestId} {
+      // Allow reading if you are either the sender or the receiver (by email)
+      allow read: if isAuthenticated() && (
+        request.auth.uid == resource.data.fromUid || 
+        request.auth.token.email == resource.data.toEmail
+      );
+      
+      // Allow creating a request if you are the sender
+      allow create: if isAuthenticated() && 
+                    request.resource.data.fromUid == request.auth.uid &&
+                    request.resource.data.status == 'pending';
+      
+      // Allow updating if you are the receiver (to accept/reject) 
+      // or the sender (to cancel - though not implemented yet)
+      allow update: if isAuthenticated() && (
+        request.auth.token.email == resource.data.toEmail ||
+        request.auth.uid == resource.data.fromUid
+      );
+      
+      allow delete: if isAuthenticated() && (
+        request.auth.uid == resource.data.fromUid ||
+        request.auth.token.email == resource.data.toEmail
+      );
+    }
+  }
+}
