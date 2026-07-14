@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0f19; /* Deep Slate Blue */
+  --foreground: #f1f5f9; /* Soft Off-White */
+  --card: #111827; /* Dark Grey/Blue */
+  --card-border: #1f2937;
+  --card-foreground: #f1f5f9;
+  
+  /* Primary Indigo Accent */
+  --primary: #6366f1; 
+  --primary-hover: #4f46e5;
+  --primary-foreground: #ffffff;
+  
+  /* Neon Accents */
+  --neon-cyan: #06b6d4;
+  --neon-green: #10b981;
+  --neon-pink: #f43f5e;
+  
+  --muted: #4b5563;
+  --muted-foreground: #9ca3af;
+  --border: #374151;
+  --input: #1f2937;
+  --ring: #6366f1;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-border: var(--card-border);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-green: var(--neon-green);
+  --color-neon-pink: var(--neon-pink);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+/* Glassmorphism utility card styling */
+.glass-panel {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glow-indigo {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.25);
+}
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+}

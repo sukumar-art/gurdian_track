@@ -1,0 +1,82 @@
+{
+  "colors": {
+    "background": "#0b0f19",
+    "primary": "#6366f1",
+    "secondary": "#06b6d4",
+    "success": "#10b981",
+    "error": "#ef4444",
+    "neutral": "#64748b",
+    "white": "#ffffff",
+    "black": "#000000"
+  },
+  "effects": {
+    "glassPanel": {
+      "backdropFilter": "blur(12px)",
+      "backgroundColor": "rgba(11, 15, 25, 0.7)"
+    },
+    "glowIndigo": {
+      "boxShadow": "0 0 12px #6366f1"
+    },
+    "glowCyan": {
+      "boxShadow": "0 0 12px #06b6d4"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "primary": "Inter, sans-serif",
+      "secondary": "JetBrains Mono, monospace"
+    },
+    "sizes": {
+      "h1": "32px",
+      "h2": "24px",
+      "body": "16px",
+      "small": "14px"
+    },
+    "weights": {
+      "heading": 700,
+      "body": 400,
+      "emphasis": 500
+    },
+    "lineHeights": {
+      "heading": 1.3,
+      "body": 1.5
+    }
+  },
+  "spacing": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "16px",
+    "lg": "24px",
+    "xl": "32px"
+  },
+  "radius": {
+    "sm": "4px",
+    "md": "8px",
+    "lg": "12px"
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "backgroundColor": "#6366f1",
+        "color": "#ffffff",
+        "hoverEffect": "glowIndigo"
+      },
+      "secondary": {
+        "borderColor": "#06b6d4",
+        "color": "#06b6d4",
+        "backgroundColor": "transparent",
+        "hoverEffect": "glowCyan"
+      }
+    },
+    "card": {
+      "background": "glassPanel",
+      "borderRadius": "12px",
+      "padding": "16px"
+    },
+    "table": {
+      "rowHover": {
+        "backgroundColor": "rgba(99, 102, 241, 0.1)"
+      }
+    }
+  }
+}
